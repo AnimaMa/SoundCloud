@@ -75,6 +75,12 @@
             <button type="submit" class="btn btn-default">Publish</button>
 
         </div>
+
+        <div class="form-group">
+            <label for="song">Photo of author</label>
+            <input name="song" type="file" class="form-control" id="song" placeholder="song">
+
+        </div>
     </form>
 
 @endsection

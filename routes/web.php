@@ -32,3 +32,10 @@ Route::post('authors/add', 'AuthorsController@store');
 
 Route::get('authors/{authorId}/edit', 'AuthorsController@edit');
 Route::put('authors/edit', 'AuthorsController@update');
+
+
+Route::get('songs', 'SongsController@show');
+
+Route::get('songs/add', 'SongsController@add');
+Route::post('songs/add', 'SongsController@store');
+//Route::get('songs/{id}', 'SongsController@show');

@@ -34,6 +34,14 @@
                 <td>
                     <img class="img-db" src="{{ url( $album->cover ) }}" alt="">
                 </td>
+              <td>
+                  <audio controls>
+                      <source src="{{ url( $album->song ) }}" type="audio/ogg">
+                      <source src="{{ url( $album->song ) }}" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                  </audio>
+              </td>
+
 
                 <td>
                     <a href="{{ url("albums/$album->id/delete") }}" class="delete"> &#x2718;</a>

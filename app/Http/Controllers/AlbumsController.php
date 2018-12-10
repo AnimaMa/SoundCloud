@@ -24,6 +24,7 @@ class AlbumsController extends Controller
 
         $path = request()->file('cover')->store('covers');
         $path2 = request()->file('photo')->store('profile_uploads');
+        $path3 = request()->file('song')->store('songs');
 //        Album::create([
 //            'name' => request('name'),
 //            'author' => request('author'),
@@ -43,7 +44,8 @@ class AlbumsController extends Controller
                 'type' => request('type'),
                 'amount_songs' => request('amount_songs'),
                 'released' => request('released'),
-                'cover' => 'uploads/' . $path
+                'cover' => 'uploads/' . $path,
+                'song' => 'uploads/' . $path3
             ]);
         } else { // ak sme vytvorili noveho autora a nevybrali sme z DB
 
@@ -51,7 +53,9 @@ class AlbumsController extends Controller
             $newAuthor = Author::create([
                 'name' => request('author'),
                 'description' => request('description'),
-                'photo' => 'uploads/' . $path2
+                'photo' => 'uploads/' . $path2,
+                'song' => 'uploads/' . $path3
+
             ]);
 
             //vytvorit novy album s tym novym autorom
@@ -63,7 +67,9 @@ class AlbumsController extends Controller
                 'type' => request('type'),
                 'amount_songs' => request('amount_songs'),
                 'released' => request('released'),
-                'cover' => 'uploads/' . $path
+                'cover' => 'uploads/' . $path,
+                'song' => 'uploads/' . $path3
+
             ]);
 
         }
@@ -121,6 +127,7 @@ class AlbumsController extends Controller
             $data['cover'] = 'uploads/' . $path;
         }
         $path2 = request()->file('photo')->store('profile_uploads');
+        $path3 = request()->file('song')->store('songs');
 
         if (request('author_id') == 0) { // ak sme vybrali autora z DB
 //            Album::create([

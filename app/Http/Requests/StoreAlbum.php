@@ -31,7 +31,9 @@ class StoreAlbum extends FormRequest
         'type' => 'required',
         'amount_songs' => 'required|integer',
         'released' => 'required|integer',
-        'cover' => 'required|mimes:jpeg,jpg,bmp,png'
+        'cover' => 'required|mimes:jpeg,jpg,bmp,png',
+        'song'=>'required'
+
     ];
     }
 }

@@ -7,6 +7,7 @@
     <th>Amount of songs</th>
     <th>Released</th>
     <th>Cover</th>
+    <th>Song</th>
     <th>Delete the album</th>
 
 </tr>

@@ -212,7 +212,8 @@ section {
   display: flex;
   border-bottom: 1px solid #add8e6;
 }
-.album-table td {
+.album-table td,
+.album-table th {
   -o-box-flex: 1;
   box-flex: 1;
   flex: 0 0 10%;

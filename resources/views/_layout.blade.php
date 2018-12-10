@@ -29,6 +29,8 @@
                 <a href="{{ url('authors') }}" class="nav-link {{ Request::is('albums') ? 'active' : '' }}">Authors</a>
                 <a href="{{ url('albums/add') }}" class="nav-link {{ Request::is('add') ? 'active' : '' }}">Add album</a>
                 <a href="{{ url('authors/add') }}" class="nav-link {{ Request::is('add') ? 'active' : '' }}">Add author</a>
+                <a href="{{ url('songs') }}" class="nav-link {{ Request::is('add') ? 'active' : '' }}">Songs</a>
+                <a href="{{ url('songs/add') }}" class="nav-link {{ Request::is('add') ? 'active' : '' }}">Add song</a>
 
             </nav>
 

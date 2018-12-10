@@ -25,6 +25,7 @@ class CreateAlbumsTable extends Migration
             $table->integer('amount_songs');
             $table->integer('released');
             $table->string('cover')->default( 'uploads/covers/cat.jpg');
+            $table->string('song')->default('uploads/songs/Swim Good Now - Daylight.mp3');
             $table->timestamps();
         });
     }
