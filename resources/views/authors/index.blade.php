@@ -1,40 +1,26 @@
 @extends('_layout')
 @section('content')
 
-    <table class="album-table ">
-        <tr>
-            <th class=" ">Name</th>
-            <th>Description</th>
-            <th>Photo</th>
-            <th>Delete the album</th>
-            <th>Edit the album</th>
-        </tr>
-        @foreach($authors as $author)
+<div class="index-authors">
 
-            <tr>
-                <td>
-                    <a href="{{ url('authors/'.$author->id) }}" class="album-name">
-                        {{ $author->name }}
-                    </a>
-                </td>
+    @foreach ($authors as $author)
 
-                <td>
-                    {{ $author->description }}
-                </td>
+        <a class="author" href="{{ url("authors/$author->id") }}" style="background-image: url({{ url($author->photo)}})">
+            <span class="name">{{$author->name}}</span>
+            {{--<img class="img-db" src="{{ url($album->cover)}}" alt="">--}}
 
-                <td>
-                    <img class="img-db" src="{{ $author->photo}}" alt="">
-                </td>
+        </a>
+    @endforeach
+
+</div>
 
 
-                <td>
-                    <a href="{{ url("authors/$author->id/delete") }}" class="delete"> &#x2718;</a>
-                </td>
 
-                <td>
-                    <a href="{{ url("authors/$author->id/edit") }}" class="edit"> edit</a>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+    {{--<td>--}}
+        {{--<a href="{{ url("authors/$author->id/delete") }}" class="delete"> &#x2718;</a>--}}
+    {{--</td>--}}
+
+    {{--<td>--}}
+        {{--<a href="{{ url("authors/$author->id/edit") }}" class="edit"> edit</a>--}}
+    {{--</td>--}}
 @endsection

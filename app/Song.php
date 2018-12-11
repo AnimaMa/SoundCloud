@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    protected $fillable = ['title', 'song'];
+    protected $fillable = ['id','title', 'song', 'author_id', 'album_id'];
 
     public function album() {
 
@@ -19,3 +19,4 @@ class Song extends Model
         return $this->belongsTo('App\Author');
     }
 }
+

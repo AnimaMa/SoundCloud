@@ -1,65 +1,35 @@
 @extends('_layout')
 @section('content')
-    <div class="show-albums">
-        <table class="album-table ">
-            @include('albums.th_table')
-            @foreach($albums as $album)
+<div class="wrap">
 
-                <tr>
-                    <td>
-                        <a href="{{ url('albums/'.$album->id) }}" class="album-name">
-                            {{ $album->name }} </a>
+    <h2 class="h1 tac">All albums</h2>
 
-                    </td>
+    <div class="all-albums">
+        @foreach($albums as $album)
+            <a href="{{ url('albums/'.$album->id) }}" class="album">
+                <div class="left">
+                    <div class="cover">
+                        <img src="{{ url( $album->cover ) }}" alt="">
+                    </div>
+                </div>
 
-                    <td>
-                        <a href="{{ url('authors/'.$album->author->id) }}">{{ $album->author->name }}</a>
+                <span class="right">
+                                        {{--<span class="h2">{{ $album->name }}</span>--}}
+                  <span class="h2">  {{ str_limit($album->name, $limit = 12, $end = '...') }}</span>
+                   <span class="details">
+                     <span class="author" href="{{ url('authors/'.$album->author->id) }}">{{ $album->author->name }}</span>
+                    <span class="date">  {{ $album->released }}</span>
+                   </span>
 
-                    </td>
-
-                    <td>     {{ $album->producer }}</td>
-
-                    <td>
-                        <a href=" {{ url($album->genres) }}">
-                            {{ $album->genres }}
-                        </a>
-                    </td>
-
-                    <td>
-                        {{ $album->type }}
-                    </td>
-
-                    <td>
-                        {{ $album->amount_songs }}
-                    </td>
-
-                    <td>
-                        {{ $album->released }}
-                    </td>
-
-                    <td class="img-db">
-                        <img  src="{{ url( $album->cover ) }}" alt="">
-                    </td>
-                    <td>
-                        <audio controls>
-                            <source src="{{ url( $album->song ) }}" type="audio/ogg">
-                            <source src="{{ url( $album->song ) }}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </td>
+                </span>
 
 
-                    <td>
-                        <a href="{{ url("albums/$album->id/delete") }}" class="delete"> &#x2718;</a>
-                    </td>
-                    <td>
-                        <a href="{{ url("albums/$album->id/edit") }}" class="edit"> edit</a>
-                    </td>
-                </tr>
+            </a>
+        @endforeach
 
-            @endforeach
-
-        </table>
     </div>
+
+</div>
+
 
 @endsection

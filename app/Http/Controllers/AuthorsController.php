@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Album;
 use App\Author;
 use App\Http\Requests\StoreAlbum;
 use App\Http\Requests\StoreAuthor;
 use App\Http\Requests\UpdateAuthor;
+use App\Song;
 use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
@@ -18,7 +20,11 @@ class AuthorsController extends Controller
 
     public function show($id) {
         $author = Author::where('id', $id)->first();
-        return view('authors.show')->with('author', $author);
+        $songs = Song::where('author_id', $id)->get()->all();
+        $albums = Album::where('author_id', $id)->get()->all();
+        return view('authors.show')->with('author', $author)
+            ->with('albums', $albums)
+            ->with('songs', $songs);
     }
 
     public function destroy($id) {

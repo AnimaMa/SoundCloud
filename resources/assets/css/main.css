@@ -156,6 +156,30 @@ p {
     margin: 4px 0 25px;
   }
 }
+.h2 {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: calc(20px + 2 * ((100vw - 420px) / 860));
+  letter-spacing: 2.8px;
+  line-height: 1.2;
+  margin: 10px 0;
+  margin-bottom: 25px;
+}
+@media screen and (min-width: 1280px){
+  .h2{
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 420px){
+  .h2{
+    font-size: 20px;
+  }
+}
+@media (max-width: 599px) {
+  .h2 {
+    margin: 4px 0 25px;
+  }
+}
 .split {
   display: -ms-flexbox;
   display: box;
@@ -243,6 +267,83 @@ section {
   background-image: linear-gradient(to right, #94c0e8, #507ba3, #3c5d7b);
   padding: 50px;
 }
+.all-albums {
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  flex-wrap: wrap;
+}
+.all-albums .album {
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 25%;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+}
+.all-albums .album .left {
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 60%;
+}
+.all-albums .album .right {
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 40%;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -o-box-orient: vertical;
+  flex-direction: column;
+  padding-left: 10px;
+  -o-box-pack: justify;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.all-albums .album .right .h2 {
+  color: #507ba3;
+}
+.all-albums .album .right .details {
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -o-box-orient: vertical;
+  flex-direction: column;
+  position: relative;
+  bottom: 0;
+}
+.all-albums .album .right .details .author {
+  color: #1a252e;
+  font-size: 18px;
+}
+.all-albums .album .right .details .date {
+  color: 0.3s;
+  font-size: 13px;
+}
+..all-albums .album:nth-child(2) {
+  background-color: #f5f5f5;
+}
+.bottom-songs .song {
+  margin-bottom: 10px;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -o-box-align: center;
+  align-items: center;
+}
+.bottom-songs .song .title {
+  margin-right: 10px;
+  font-size: 20px;
+}
+.bottom-songs .song .title,
+.bottom-songs .song audio {
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 50%;
+}
 form {
   max-width: 800px;
   margin: 0 auto;
@@ -265,8 +366,20 @@ header {
   height: 100px;
   color: #151e24;
 }
+header .logo {
+  height: 100%;
+}
+header .logo img {
+  width: 200px;
+  height: 100px;
+}
 header .wrap {
   height: 100%;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -o-box-align: center;
+  align-items: center;
 }
 header nav {
   display: -ms-flexbox;
@@ -275,11 +388,191 @@ header nav {
   -o-box-align: center;
   align-items: center;
   height: 100%;
+  align-self: flex-start;
+  -ms-flex-item-align: start;
 }
 header nav a {
   margin-right: 15px;
   color: #bf9474;
   font-size: 18px;
+}
+header nav a:hover {
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+header nav a.active {
+  color: #94c0e8;
+}
+.index-authors {
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.index-authors .author {
+  height: 100px;
+  display: block;
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 100%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+  text-align: center;
+  padding: 20px 10px;
+  overflow: hidden;
+}
+.index-authors .author:before {
+  content: '';
+  background-color: #000;
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 0 solid transparent;
+  transition: border 0.5s;
+}
+.index-authors .author .name {
+  display: block;
+  margin: 0 auto;
+  font-size: 22px;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  z-index: 3;
+  position: relative;
+  color: #fff;
+}
+.index-authors .author:hover {
+  transform: scale(0.97);
+}
+.index-authors .author:hover .name {
+  opacity: 0.4;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: alpha(opacity=40);
+  transition: all 0.3s;
+}
+.show-album .top {
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+}
+.show-album .top .left {
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 40%;
+}
+.show-album .top .right {
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 60%;
+  padding-left: 15px;
+  -o-box-align: center;
+  align-items: center;
+}
+.show-album .top .right .info {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+.show-album .top .right .info a {
+  color: #507ba3;
+}
+.show-album .top .right .info span {
+  font-weight: normal;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 19px;
+  color: #94c0e8;
+}
+.show-album .bottom {
+  margin-top: 40px;
+}
+.show-author .top {
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+}
+.show-author .top .left {
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 40%;
+}
+.show-author .top .right {
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 60%;
+}
+.show-author .bottom-albums .albums {
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  flex-wrap: wrap;
+}
+.show-author .bottom-albums .albums .album {
+  height: 100px;
+  display: block;
+  -o-box-flex: 1;
+  box-flex: 1;
+  flex: 0 0 20%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+  text-align: center;
+  padding: 20px 10px;
+  overflow: hidden;
+}
+.show-author .bottom-albums .albums .album:before {
+  content: '';
+  background-color: #000;
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 0 solid transparent;
+  transition: border 0.5s;
+}
+.show-author .bottom-albums .albums .album .name {
+  display: block;
+  margin: 0 auto;
+  font-size: 18px;
+  z-index: 3;
+  position: relative;
+  color: #fff;
+}
+.show-author .bottom-albums .albums .album:hover {
+  transform: scale(0.97);
+}
+.show-author .bottom-albums .albums .album:hover .name {
+  opacity: 0.4;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: alpha(opacity=40);
+  transition: all 0.3s;
 }
 
 /*# sourceMappingURL=main.css.map */

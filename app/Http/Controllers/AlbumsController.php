@@ -6,6 +6,7 @@ use App\Album;
 use App\Author;
 use App\Http\Requests\StoreAlbum;
 use App\Http\Requests\UpdateAlbum;
+use App\Song;
 use Illuminate\Http\Request;
 
 class AlbumsController extends Controller
@@ -82,8 +83,14 @@ class AlbumsController extends Controller
     public function show($id)
     {
         $album = Album::where('id', $id)->first();
+        $songs = Song::where('album_id', $id)->get()->all();
+        $songsFromOtherAlbums = Song::where('author_id', 'author_id')->get()->all();
+        var_dump($songsFromOtherAlbums);
 
-        return view('albums.show')->with('album', $album);
+//        $albumsFromThisAuthor =
+
+        return view('albums.show')->with('album', $album)
+            ->with('songs', $songs);
 
     }
 

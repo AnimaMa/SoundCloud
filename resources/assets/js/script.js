@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var Vue = require('vue');
+
 var scrollToElement = require('scroll-to-element');
 
 Vue.config.debug = true;
@@ -23,7 +24,7 @@ var App = new Vue({
         CookiesNotification: require('./components/CookiesNotification.vue'),
         Tabs: require('./components/Tabs.vue'),
         Tab: require('./components/Tab.vue'),
-        SlickSlider: require('./components/SlickSlider.vue'),
+        SlickSlider: require('./components/SlickSlider.vue')
     },
 
     data: {

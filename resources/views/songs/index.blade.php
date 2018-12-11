@@ -29,6 +29,8 @@
 
                 <td>
                     {{ $song->author_id }}
+                    {{--{{ $album->author->id }}--}}
+
                 </td>
 
 
@@ -43,11 +45,11 @@
                 </td>
 
                 <td>
-                    {{--<audio controls>--}}
-                        {{--<source src="{{ url( $song->file ) }}" type="audio/ogg">--}}
-                        {{--<source src="{{ url( $song->file ) }}" type="audio/mpeg">--}}
-                        {{--Your browser does not support the audio element.--}}
-                    {{--</audio>--}}
+                    <audio controls>
+                        <source src="{{ url( $song->song ) }}" type="audio/ogg">
+                        <source src="{{ url( $song->song ) }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
                 </td>
             </tr>
         @endforeach

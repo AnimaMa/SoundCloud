@@ -1,58 +1,76 @@
 @extends('_layout')
 @section('content')
-    <div class="show-albums">
-        <table class="album-table ">
-            @include('albums.th_table')
+    <div class="wrap">
+        <div class="show-album">
 
-            <tr>
-                <td>
-                    {{ $album->name }}
-                </td>
+            <h1 class="h1"> {{ $album->name }}</h1>
 
-                <td>
-                    <a href="{{ url('authors/'.$album->author->id) }}">{{ $album->author->name }}</a>
-                </td>
+            <div class="top">
+                <div class="left">
+                    <div class="cover">
+                        <img class="img-db" src="{{ url( $album->cover ) }}" alt="">
+                    </div>
+                </div>
 
-                <td>
-                    {{ $album->producer }}</td>
-                <td>
-                    <a href=" {{ url($album->genres) }}"> {{ $album->genres }}</a>
-                </td>
-
-                <td>
-                    {{ $album->type }}
-                </td>
-
-                <td>
-                    {{ $album->amount_songs }}
-                </td>
-
-                <td>
-                    {{ $album->released }}
-                </td>
-
-                <td>
-                    <img class="img-db" src="{{ url( $album->cover ) }}" alt="">
-                </td>
-              <td>
-                  <audio controls>
-                      <source src="{{ url( $album->song ) }}" type="audio/ogg">
-                      <source src="{{ url( $album->song ) }}" type="audio/mpeg">
-                      Your browser does not support the audio element.
-                  </audio>
-              </td>
+                <div class="right">
+                    <span class="info">Author:
+                       <span> <a href="{{ url('authors/'.$album->author->id) }}">{{ $album->author->name }}</a></span> </span>
+                    <span class="info">Released: <span>{{ $album->released }}</span></span>
+                    <span class="info">Producer: <span>{{ $album->producer }}</span></span>
+                    <span class="info">Type of album: <span>{{ $album->type }}</span></span>
+                    <span class="info">Genre: <span> <a
+                                    href=" {{ url($album->genres) }}"> {{ $album->genres }}</a></span></span>
+                    <span class="info">Amount of songs: <span>{{ count($songs) }}</span></span>
 
 
-                <td>
-                    <a href="{{ url("albums/$album->id/delete") }}" class="delete"> &#x2718;</a>
-                </td>
-                <td>
-                    <a href="{{ url("albums/$album->id/edit") }}" class="edit"> edit</a>
-                </td>
-            </tr>
+                </div>
+
+            </div>
+            <div class="bottom bottom-songs">
+                <h2 class="h2">Songs from album</h2>
+                @foreach ($songs as $song)
+
+                    <div class="song">
+                        <span class="title">{{ $song->title }}</span>
+
+                        <audio controls>
+                            <source src="{{ url( $song->song ) }}" type="audio/ogg">
+                            <source src="{{ url( $song->song ) }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                @endforeach
 
 
-        </table>
+            </div>
+
+
+            <div class="bottom bottom-songs">
+                <h2 class="h2">Others songs by this author</h2>
+                @foreach ($songs as $song)
+
+                    <div class="song">
+                        <span class="title">{{ $song->title }}</span>
+
+                        <audio controls>
+                            <source src="{{ url( $song->song ) }}" type="audio/ogg">
+                            <source src="{{ url( $song->song ) }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                @endforeach
+
+
+            </div>
+
+
+            <a href="{{ url("albums/$album->id/delete") }}" class="delete"> &#x2718;</a>
+            <a href="{{ url("albums/$album->id/edit") }}" class="edit"> edit</a>
+
+
+        </div>
     </div>
 
 @endsection
