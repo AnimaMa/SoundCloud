@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('efekt', function () {
+    return view('efekt');
+});
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('albums', 'AlbumsController@index');

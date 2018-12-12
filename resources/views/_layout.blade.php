@@ -14,9 +14,9 @@
 
 
 </head>
-<body>
+<body class="{{ Request::is('efekt') ? 'body-effect' : '' }}">
 
-<div id="site">
+<div id="site ">
 
 
     <header class="@yield('headerClass')">
@@ -48,6 +48,8 @@
         @yield('content')
     </div>
 
+        @yield('content-effect')
+
     <footer class="light">
 
     </footer>
@@ -59,9 +61,9 @@
     <script src="{{ elixir('js/all.js') }}"></script>
 @endif
 
-<script>
-    AOS.init();
-</script>
+{{--<script>--}}
+    {{--AOS.init();--}}
+{{--</script>--}}
 @yield('scripts')
 </body>
 </html>
