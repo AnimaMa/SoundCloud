@@ -345,8 +345,6 @@ section {
   flex: 0 0 50%;
 }
 .body-effect {
-  overflow: hidden !important;
-  height: 100% !important;
   transition: background-color 900ms 250ms ease-in-out;
   position: relative;
 }
@@ -366,7 +364,7 @@ section {
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background: #f00;
+  background: #add8e6;
   transform: scale(0.95, 0.92) translateZ(0px);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -386,6 +384,10 @@ sections-holder.trans {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translate3d(0px, -532px, 0px);
+}
+.media-holder .chan {
+  background-color: #1f648b;
+  transition: all 900ms 250ms ease-in-out;
 }
 form {
   max-width: 800px;

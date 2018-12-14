@@ -48,8 +48,10 @@
         @yield('content')
     </div>
 
+    <div id="site">
         @yield('content-effect')
 
+    </div>
     <footer class="light">
 
     </footer>
@@ -62,7 +64,7 @@
 @endif
 
 {{--<script>--}}
-    {{--AOS.init();--}}
+{{--AOS.init();--}}
 {{--</script>--}}
 @yield('scripts')
 </body>
