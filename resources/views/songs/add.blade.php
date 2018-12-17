@@ -23,13 +23,13 @@
 
         <div class="form-group">
             <label for="author">Author</label>
-            {{--Vyber autora: @include('partials.select-authors')--}}
+            Vyber autora: @include('partials.select-authors', ['isNew' => true])
         </div>
 
         <div class="form-group">
             <label for="author">Album</label>
             {{--Vyber autora: @include('partials.select-albums')--}}
-            <option value="{{ $album->author  }}">{{ $album->author  }}</option>
+{{--            <option value="{{ $album->author  }}">{{ $album->author  }}</option>--}}
         </div>
         <br>
 

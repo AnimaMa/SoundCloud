@@ -82,16 +82,20 @@ class AlbumsController extends Controller
 
     public function show($id)
     {
+        $author= Author::get()->all();
+//        $albumAny = Album::where('author_id', )->first();
         $album = Album::where('id', $id)->first();
+        $allAlbums = Album::where('author_id', $album->author_id)->get()->all();
         $songs = Song::where('album_id', $id)->get()->all();
-        $songsFromOtherAlbums = Song::where('author_id', 'author_id')->get()->all();
-        var_dump($songsFromOtherAlbums);
-
+        $allSongsFromAuthor = Song::where( 'author_id', $album->author_id )->get()->all();
+        $songsFromThisAlbum = Song::where('album_id', $id)->get();
 //        $albumsFromThisAuthor =
-
         return view('albums.show')->with('album', $album)
+            ->with('allSongsFromAuthor', $allSongsFromAuthor)
+            ->with('author', $author)
+            ->with('allAlbums', $allAlbums)
+            ->with('songsFromThisAlbum', $songsFromThisAlbum)
             ->with('songs', $songs);
-
     }
 
     public function add()

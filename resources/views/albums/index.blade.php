@@ -15,7 +15,7 @@
 
                 <span class="right">
                                         {{--<span class="h2">{{ $album->name }}</span>--}}
-                  <span class="h2">  {{ str_limit($album->name, $limit = 12, $end = '...') }}</span>
+                    <span class="h2">  {{ str_limit($album->name, $limit = 12, $end = '...') }}</span>
                    <span class="details">
                      <span class="author" href="{{ url('authors/'.$album->author->id) }}">{{ $album->author->name }}</span>
                     <span class="date">  {{ $album->released }}</span>

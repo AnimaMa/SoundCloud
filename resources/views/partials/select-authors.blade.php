@@ -1,8 +1,8 @@
 <select name="author_id" class="nav-categ" id="">
-    @if(Request::is('albums/add') )
+    @if(isset($isNew) && $isNew)
         <option value="0">---</option>
     @else
-        <option value="{{ $album->author->name }}">{{ $album->author->name }}</option>
+        <option value="{{ $song->author->name }}">{{ $song->author->name }}</option>
     @endif
 
     @foreach($authors as $author )

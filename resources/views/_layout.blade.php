@@ -22,7 +22,7 @@
     <header class="@yield('headerClass')">
         <div class="wrap">
             <div class="logo">
-                <img src="./img/logo.svg" alt="">
+                <img src="/img/logo.svg" alt="">
             </div>
             <nav>
 
