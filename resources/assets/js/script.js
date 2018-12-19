@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var Vue = require('vue');
+import fullpage from 'fullpage.js';
 
 var scrollToElement = require('scroll-to-element');
 
@@ -15,6 +16,18 @@ if(mobilecheck()) {
     $('body').addClass('mobile');
 }
 
+// When using fullPage extensions replace the previous import
+// of fullpage.js for this file
+//import fullpage from 'fullpage.js/dist/fullpage.extensions.min';
+
+// Initializing it
+var fullPageInstance = new fullpage('#myFullpage', {
+    navigation: true,
+    sectionsColor:['#ff5f45', '#0798ec', '#fc6c7c', 'grey']
+});
+
+
+
 var App = new Vue({
 
     el: '#site',
@@ -25,7 +38,8 @@ var App = new Vue({
         Tabs: require('./components/Tabs.vue'),
         Tab: require('./components/Tab.vue'),
         SlickSlider: require('./components/SlickSlider.vue'),
-        ScrollEfekt: require('./components/ScrollEfekt.vue')
+        ScrollEfekt: require('./components/ScrollEfekt.vue'),
+        FullPage: require('./components/FullPage.vue')
     },
 
     data: {

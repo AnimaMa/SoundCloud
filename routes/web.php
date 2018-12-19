@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('fullpage', function () {
+    return view('fullpage');
+});
+
 Route::get('efekt', function () {
     return view('efekt');
 });

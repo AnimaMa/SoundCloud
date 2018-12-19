@@ -1,10 +1,10 @@
 @extends('_layout')
 @section('content-effect')
 
-<div class="body-effect">
+<div class="body-effect ">
 
     <scroll-efekt>
-        <div class="sections-holder home-sections-holder" >
+        <div class="sections-holder home-sections-holder fullpage " >
 
 
             <section class="section intro active" data-color-scheme="dark" data-bg-color="#000000"

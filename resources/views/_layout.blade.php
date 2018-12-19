@@ -59,6 +59,11 @@
 
 @if(App::isLocal())
     <script src="/js/all.js"></script>
+    <script src="https://unpkg.com/vue-fullpage.js/dist/vue-fullpage.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css">
+
+
 @else
     <script src="{{ elixir('js/all.js') }}"></script>
 @endif
