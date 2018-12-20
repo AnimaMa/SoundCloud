@@ -27,7 +27,7 @@
 
         <div class="form-group">
             <label for="author">Author</label>
-           Vyber autora: @include('partials.select-authors')
+           Vyber autora: @include('partials.select-authors', ['isNew' => true])
         </div>
         <br>
         <div class="form-group">

@@ -22,6 +22,10 @@
                                     href=" {{ url($album->genres) }}"> {{ $album->genres }}</a></span></span>
                     <span class="info">Amount of songs: <span>{{ count($songs) }}</span></span>
 
+                    <div>
+                        <a href="{{ url("albums/$album->id/delete") }}" class="delete"> &#x2718;</a>
+                        <a href="{{ url("albums/$album->id/edit") }}" class="edit"> edit</a>
+                    </div>
 
                 </div>
 
@@ -29,9 +33,28 @@
             <div class="bottom bottom-songs">
                 <h2 class="h2">Songs from album</h2>
 
-
                 @if(count( $songsFromThisAlbum)  > 0)
                     @foreach ($songsFromThisAlbum as $song)
+                        <div class="song">
+                            <span class="title">{{ $song->title }}</span>
+
+                            <audio controls>
+                                <source src="{{ url( $song->song ) }}" type="audio/ogg">
+                                <source src="{{ url( $song->song ) }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    @endforeach
+                @endif
+
+            </div>
+
+            <div class="bottom bottom-songs">
+                @foreach($allSongsFromAuthor as $song)
+                    @if($song->album_id != $album->id)
+                        @if($loop->first)
+                            <h2 class="h2">Other songs</h2>
+                        @endif
 
                         <div class="song">
                             <span class="title">{{ $song->title }}</span>
@@ -42,67 +65,37 @@
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
-
-                    @endforeach
-                @endif
-
-
-            </div>
-
-
-            <div class="bottom bottom-songs">
-                <h2 class="h2">Other songs by this author</h2>
-
-                @foreach($allSongsFromAuthor as $song)
-
-                    <div class="song">
-                        <span class="title">{{ $song->title }}</span>
-
-                        <audio controls>
-                            <source src="{{ url( $song->song ) }}" type="audio/ogg">
-                            <source src="{{ url( $song->song ) }}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
-
-
+                    @endif
                 @endforeach
 
             </div>
 
             <div class="bottom bottom-songs">
-                <h2 class="h2">Other albums</h2>
-
                 @foreach($allAlbums as $album)
-                    <a href="{{ url('albums/'.$album->id) }}" class="album">
-                        <div class="left">
-                            <div class="cover">
-                                <img src="{{ url( $album->cover ) }}" alt="">
+                    @if($album->id != $album->id)
+                        @if($loop->first)
+                            <h2 class="h2">Other albums</h2>
+                        @endif
+                        <a href="{{ url('albums/'.$album->id) }}" class="album">
+                            <div class="left">
+                                <div class="cover">
+                                    <img src="{{ url( $album->cover ) }}" alt="">
+                                </div>
                             </div>
-                        </div>
 
-                        <span class="right">
+                            <span class="right">
                                         {{--<span class="h2">{{ $album->name }}</span>--}}
-                            <span class="h2">  {{ str_limit($album->name, $limit = 12, $end = '...') }}</span>
-                   <span class="details">
-                     <span class="author" href="{{ url('authors/'.$album->author->id) }}">{{ $album->author->name }}</span>
-                    <span class="date">  {{ $album->released }}</span>
-                   </span>
-
-                </span>
-
-
-                    </a>
-
+                                <span class="h2">  {{ str_limit($album->name, $limit = 12, $end = '...') }}</span>
+                               <span class="details">
+                                 <span class="author"
+                                       href="{{ url('authors/'.$album->author->id) }}">{{ $album->author->name }}</span>
+                                <span class="date">  {{ $album->released }}</span>
+                               </span>
+                            </span>
+                        </a>
+                    @endif
                 @endforeach
-
             </div>
-
-
-            <a href="{{ url("albums/$album->id/delete") }}" class="delete"> &#x2718;</a>
-            <a href="{{ url("albums/$album->id/edit") }}" class="edit"> edit</a>
-
-
         </div>
     </div>
 

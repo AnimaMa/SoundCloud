@@ -21,10 +21,10 @@ if(mobilecheck()) {
 //import fullpage from 'fullpage.js/dist/fullpage.extensions.min';
 
 // Initializing it
-var fullPageInstance = new fullpage('#myFullpage', {
-    navigation: true,
-    sectionsColor:['#ff5f45', '#0798ec', '#fc6c7c', 'grey']
-});
+// var fullPageInstance = new fullpage('#myFullpage', {
+//     navigation: true,
+//     sectionsColor:['#ff5f45', '#0798ec', '#fc6c7c', 'grey']
+// });
 
 
 
@@ -39,7 +39,7 @@ var App = new Vue({
         Tab: require('./components/Tab.vue'),
         SlickSlider: require('./components/SlickSlider.vue'),
         ScrollEfekt: require('./components/ScrollEfekt.vue'),
-        FullPage: require('./components/FullPage.vue')
+        // FullPage: require('./components/FullPage.vue')
     },
 
     data: {

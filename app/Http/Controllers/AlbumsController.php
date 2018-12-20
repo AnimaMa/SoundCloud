@@ -83,13 +83,14 @@ class AlbumsController extends Controller
     public function show($id)
     {
         $author= Author::get()->all();
-//        $albumAny = Album::where('author_id', )->first();
+
         $album = Album::where('id', $id)->first();
         $allAlbums = Album::where('author_id', $album->author_id)->get()->all();
+
         $songs = Song::where('album_id', $id)->get()->all();
+
         $allSongsFromAuthor = Song::where( 'author_id', $album->author_id )->get()->all();
         $songsFromThisAlbum = Song::where('album_id', $id)->get();
-//        $albumsFromThisAuthor =
         return view('albums.show')->with('album', $album)
             ->with('allSongsFromAuthor', $allSongsFromAuthor)
             ->with('author', $author)
@@ -120,8 +121,11 @@ class AlbumsController extends Controller
 
         $album = Album::where('id', $id)->first();
         $authors = Author::get()->all();
+//        $songs = Song::where('album_id', $id)->get()->all();
+
 
         return view('albums.edit')->with('album', $album)
+//            ->with('songs', $songs)
             ->with('authors', $authors);
 
     }
@@ -138,7 +142,7 @@ class AlbumsController extends Controller
             $data['cover'] = 'uploads/' . $path;
         }
         $path2 = request()->file('photo')->store('profile_uploads');
-        $path3 = request()->file('song')->store('songs');
+//        $path3 = request()->file('song')->store('songs');
 
         if (request('author_id') == 0) { // ak sme vybrali autora z DB
 //            Album::create([
@@ -152,7 +156,6 @@ class AlbumsController extends Controller
 //                'cover' => 'uploads/' . $path
 //            ]);
           // ak sme vytvorili noveho autora a nevybrali sme z DB
-
             //vytvorit noveho authora
             $newAuthor = Author::create([
                 'name' => request('author'),

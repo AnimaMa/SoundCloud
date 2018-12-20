@@ -23,7 +23,7 @@
             </td>
 
             <td>
-                {{ $album->amount_songs }}
+                {{--{{ $album->amount_songs }}--}}
             </td>
 
             <td>
@@ -75,7 +75,7 @@
 
         <div class="form-group">
             <label for="author">Author</label>
-            @include('partials.select-authors')
+            @include('partials.select-authors', ['isNew' => true])
         </div>
 
         <div class="form-group">
